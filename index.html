@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kutlubay Turizm</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'SF Pro Display', sans-serif;
+    }
+
+    nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: fixed; /* Navbar'ı sabitler */
+  width: 100%;
+  z-index: 2;
+  top: 0;
+  left: 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+    .logo {
+  width: 40px; /* Genişliği belirleyin */
+  height: 40px; /* Yüksekliği belirleyin */
+  border-radius: 50%; /* Daire şekli için */
+  object-fit: cover; /* Resmin düzgün bir şekilde kesilmesini sağlar */
+}
+
+    .slider-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .slides {
+      display: flex;
+      width: 100%;
+      height: 100%;
+    }
+
+    .slide {
+      width: 100%;
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Resmin ekranı kapsaması için */
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .hero-text {
+      position: absolute;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      font-weight: 600;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+    }
+
+    section {
+  padding: 6rem 2rem 2rem; /* Navbar'ı dikkate alarak üst padding artırıldı */
+}
+
+section.light {
+  background-color: #af0707;
+}
+
+    footer {
+  background: #222;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+
+    /* Buton stil */
+    .slider-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 15px;
+      cursor: pointer;
+      z-index: 3;
+    }
+
+    .slider-button.left {
+      left: 10px;
+    }
+
+    .slider-button.right {
+      right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <nav>
+      <img src="assets/logo.png" alt="Kutlubay Logo" class="logo" />
+      <ul>
+        <li><a href="#">Anasayfa</a></li>
+        <li><a href="#hakkimizda">Hakkımızda</a></li>
+        <li><a href="#hizmetler">Hizmetler</a></li>
+        <li><a href="#iletisim">İletişim</a></li>
+      </ul>
+    </nav>
+    <div class="slider-container">
+      <div class="slides">
+        <div class="slide">
+          <img src="assets/slider1.jpeg" alt="Slider Image 1">
+        </div>
+        <div class="slide">
+          <img src="assets/slider2.jpeg" alt="Slider Image 2">
+        </div>
+        <div class="slide">
+          <img src="assets/slider3.jpeg" alt="Slider Image 3">
+        </div>
+      </div>
+      <div class="hero-text">
+        <h1>Güvenli Yolculuk, Kutlubay’la Başlar</h1>
+        <p>Kırıkkale merkezli şehirler arası taşımacılık ve daha fazlası.</p>
+      </div>
+
+      <!-- Manuel Kaydırma Butonları -->
+      <button class="slider-button left" onclick="moveSlide(-1)">&#10094;</button>
+      <button class="slider-button right" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+  </header>
+
+  <section id="hakkimizda" class="section">
+    <h2>Hakkımızda</h2>
+    <p>Kutlubay Turizm olarak uzun yıllardır güvenli ve konforlu ulaşım hizmeti sunuyoruz. Kırıkkale'den Türkiye'nin dört bir yanına taşıyoruz.</p>
+  </section>
+
+  <section id="hizmetler" class="section light">
+    <h2>Hizmetlerimiz</h2>
+    <ul>
+      <li>🚌 Şehirler Arası Ulaşım</li>
+      <li>🎓 Öğrenci ve Personel Servisi</li>
+      <li>🌄 Özel Tur ve Gezi Organizasyonları</li>
+    </ul>
+  </section>
+
+  <section id="iletisim" class="section">
+    <h2>İletişim</h2>
+    <p><strong>Adres:</strong> Yüzyıl Cd. NO: 22/A, Cumhuriyet Mh. / Kartal, İstanbul</p>
+    <p><strong>Telefon:</strong> <a href="tel:+905555555555">+90 555 555 55 55</a></p>
+    <p><strong>WhatsApp:</strong> <a href="https://wa.me/905555555555" target="_blank">+90 555 555 55 55</a></p>
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29230.502385739716!2d33.4818081!3d39.8419107!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x61dbd60e1e807b49%3A0x1e7a52ceb071fa90!2sKutlubay%20Turizm%20K%C4%B1r%C4%B1kkale!5e0!3m2!1str!2str!4v1712665500000"
+      width="100%" height="250" style="border:0;" allowfullscreen loading="lazy"></iframe>
+  </section>
+
+  <footer>
+    <p>© 2025 Kutlubay Turizm. Tüm hakları saklıdır.</p>
+  </footer>
+
+  <script>
+    let currentSlideIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+
+    function moveSlide(n) {
+      currentSlideIndex = (currentSlideIndex + n + slides.length) % slides.length; // Döngü sağlamak için
+      updateSlidePosition();
+    }
+
+    function updateSlidePosition() {
+      const slideWidth = slides[0].clientWidth; // Her bir slaytın genişliği
+      const slideContainer = document.querySelector('.slides');
+      slideContainer.style.transform = `translateX(-${currentSlideIndex * slideWidth}px)`;
+    }
+
+    window.addEventListener('resize', updateSlidePosition); // Ekran boyutu değişirse kaydırma yeniden yapılsın
+  </script>
+</body>
+</html>
