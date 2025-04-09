@@ -51,6 +51,16 @@
       height: 100vh;
       overflow: hidden;
     }
+    .slider-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* %20 şeffaf siyah arka plan */
+  z-index: 1; /* Arka planda kalacak */
+}
 
     .slides {
       display: flex;
@@ -233,6 +243,7 @@
       <li>🚌 Şehirler Arası Ulaşım</li>
       <li>🎓 Öğrenci ve Personel Servisi</li>
       <li>🌄 Özel Tur ve Gezi Organizasyonları</li>
+      <li>💎 VIP Transfer</li>
     </ul>
   </section>
 
