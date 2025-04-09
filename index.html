@@ -12,36 +12,38 @@
     }
 
     nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 3rem;
-  background-color: rgba(0, 0, 0, 0.6);
-  position: fixed; /* Navbar'ı sabitler */
-  width: 100%;
-  z-index: 2;
-  top: 0;
-  left: 0;
-}
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 3rem;
+      background-color: rgba(0, 0, 0, 0.6);
+      position: fixed;
+      width: 100%;
+      z-index: 2;
+      top: 0;
+      left: 0;
+      box-sizing: border-box;
+    }
 
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-}
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
 
-nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-}
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
 
     .logo {
-  width: 40px; /* Genişliği belirleyin */
-  height: 40px; /* Yüksekliği belirleyin */
-  border-radius: 50%; /* Daire şekli için */
-  object-fit: cover; /* Resmin düzgün bir şekilde kesilmesini sağlar */
-}
+      width: 40px; 
+      height: 40px; 
+      border-radius: 50%; 
+      object-fit: cover;
+      flex-shrink: 0;
+    }
 
     .slider-container {
       position: relative;
@@ -65,7 +67,7 @@ nav ul li a {
     .slide img {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* Resmin ekranı kapsaması için */
+      object-fit: cover;
       position: absolute;
       top: 0;
       left: 0;
@@ -73,12 +75,14 @@ nav ul li a {
 
     .hero-text {
       position: absolute;
-      bottom: 80px;
+      top: 50%;
       left: 50%;
-      transform: translateX(-50%);
       color: white;
       text-align: center;
       z-index: 2;
+      opacity: 1; /* Animasyonları devre dışı bırakıyoruz */
+      padding: 0 1rem;
+      width: 100%;
     }
 
     .hero-text h1 {
@@ -91,19 +95,19 @@ nav ul li a {
     }
 
     section {
-  padding: 6rem 2rem 2rem; /* Navbar'ı dikkate alarak üst padding artırıldı */
-}
+      padding: 6rem 2rem 2rem;
+    }
 
-section.light {
-  background-color: #af0707;
-}
+    section.light {
+      background-color: #af0707;
+    }
 
     footer {
-  background: #222;
-  color: white;
-  text-align: center;
-  padding: 1rem;
-}
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
 
     /* Buton stil */
     .slider-button {
@@ -125,7 +129,63 @@ section.light {
     .slider-button.right {
       right: 10px;
     }
-    
+
+    /* Mobil için düzenlemeler */
+    @media (max-width: 768px) {
+      nav {
+        padding: 1rem 1.5rem;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+
+      nav ul li a {
+        font-size: 1rem;
+      }
+
+      .logo {
+        width: 50px;
+        height: 30px;
+      }
+
+      .hero-text h1 {
+        font-size: 2rem;
+      }
+
+      .hero-text p {
+        font-size: 1rem;
+      }
+
+      .hero-text {
+        top: 40%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav ul {
+        gap: 5px;
+      }
+
+      .slider-button {
+        padding: 10px;
+      }
+
+      .hero-text h1 {
+        font-size: 1.5rem;
+      }
+
+      .hero-text p {
+        font-size: 0.9rem;
+      }
+
+      .hero-text {
+        top: 35%;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -135,8 +195,7 @@ section.light {
       <ul>
         <li><a href="https://wa.me/905434517110" target="_blank" class="whatsapp-icon">
           <i class="fab fa-whatsapp"></i> WhatsApp
-        </a>
-      </li>
+        </a></li>
         <li><a href="#">Anasayfa</a></li>
         <li><a href="#hakkimizda">Hakkımızda</a></li>
         <li><a href="#hizmetler">Hizmetler</a></li>
@@ -159,8 +218,6 @@ section.light {
         <h1>Güvenli Yolculuk, Kutlubay Turizm’le Başlar</h1>
         <p>Kutlubay Turizm, Kırıkkale merkezli olarak, şehirler arası taşımacılıkta güvenliği ve konforu ön planda tutuyor. Modern araçlar ve deneyimli şoförlerle, Türkiye’nin dört bir yanına rahat ve güvenli yolculuklar sunuyoruz.</p>
       </div>
-
-      <!-- Manuel Kaydırma Butonları -->
       <button class="slider-button left" onclick="moveSlide(-1)">&#10094;</button>
       <button class="slider-button right" onclick="moveSlide(1)">&#10095;</button>
     </div>
@@ -194,21 +251,28 @@ section.light {
   </footer>
 
   <script>
-    let currentSlideIndex = 0;
-    const slides = document.querySelectorAll('.slide');
+    let slideIndex = 0;
+
+    function showSlides() {
+      let slides = document.querySelectorAll('.slide');
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = 'none';  
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) { slideIndex = 1 }    
+      slides[slideIndex - 1].style.display = 'block';  
+      setTimeout(showSlides, 3000); // Slide'ı her 3 saniyede bir değiştir
+    }
 
     function moveSlide(n) {
-      currentSlideIndex = (currentSlideIndex + n + slides.length) % slides.length; // Döngü sağlamak için
-      updateSlidePosition();
+      slideIndex += n;
+      let slides = document.querySelectorAll('.slide');
+      if (slideIndex < 1) { slideIndex = slides.length }
+      if (slideIndex > slides.length) { slideIndex = 1 }
+      showSlides(); // Manuel kaydırma için tekrar göster
     }
 
-    function updateSlidePosition() {
-      const slideWidth = slides[0].clientWidth; // Her bir slaytın genişliği
-      const slideContainer = document.querySelector('.slides');
-      slideContainer.style.transform = `translateX(-${currentSlideIndex * slideWidth}px)`;
-    }
-
-    window.addEventListener('resize', updateSlidePosition); // Ekran boyutu değişirse kaydırma yeniden yapılsın
+    showSlides(); // İlk başta otomatik olarak başlat
   </script>
 </body>
 </html>
