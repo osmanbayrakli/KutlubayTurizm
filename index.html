@@ -260,7 +260,6 @@
       slideIndex++;
       if (slideIndex > slides.length) { slideIndex = 1 }    
       slides[slideIndex - 1].style.display = 'block';  
-      setTimeout(showSlides, 3000); // Slide'ı her 3 saniyede bir değiştir
     }
 
     function moveSlide(n) {
@@ -271,7 +270,6 @@
       showSlides(); // Manuel kaydırma için tekrar göster
     }
 
-    showSlides(); // İlk başta otomatik olarak başlat
   </script>
 </body>
 </html>
