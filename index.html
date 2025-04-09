@@ -119,6 +119,38 @@
       padding: 1rem;
     }
 
+    #galeri {
+  padding: 4rem 2rem;
+  text-align: left;
+}
+
+#galeri h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.gallery {
+  display: flex;
+  overflow-x: auto; /* Yatay kaydırma etkinleştir */
+  gap: 10px;
+  scroll-snap-type: x mandatory; /* Kaydırma sırasında her resmin düzgün bir şekilde hizalanmasını sağlar */
+  padding-bottom: 20px; /* Kaydırma çubuğu için alt boşluk */
+}
+
+.gallery img {
+  width: 400px; /* Resim boyutu */
+  height: 300px;
+  border-radius: 8px; /* Resim köşelerini yuvarlat */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti */
+  transition: transform 0.3s ease; /* Hover efekti için geçiş */
+  scroll-snap-align: start; /* Resimlerin hizalanması */
+}
+
+.gallery img:hover {
+  transform: scale(1.05); /* Resmin üzerine gelindiğinde biraz büyüme efekti */
+}
+
     /* Buton stil */
     .slider-button {
       position: absolute;
@@ -145,6 +177,17 @@
       nav {
         padding: 1rem 1.5rem;
       }
+
+      .gallery img {
+    width: 50%; /* Küçük ekranlarda resimleri biraz küçültüyoruz */
+    height: auto; /* Küçük ekranlarda resimleri biraz küçültüyoruz */
+  }
+
+      .gallery {
+    grid-template-columns: 1fr; /* Küçük ekranlarda tek sütun olacak */
+  }
+
+  
 
       nav ul {
         flex-direction: column;
@@ -237,6 +280,7 @@
     <p>Kutlubay Turizm, güvenli ve konforlu ulaşım hizmetleriyle sektördeki yerini hızla sağlamlaştıran bir markadır. Kırıkkale merkezli olarak, Türkiye’nin dört bir yanına şehirler arası taşımacılık yapmaktayız. Müşteri memnuniyetini her zaman ön planda tutarak, modern araçlarımız ve deneyimli ekibimizle, yolcularımıza en iyi seyahat deneyimini sunmayı hedefliyoruz. Şehirler arası ulaşımda güvenliği ve konforu bir arada sunarak, her yolculuğu unutulmaz bir deneyime dönüştürüyoruz.</p>
   </section>
 
+  
   <section id="hizmetler" class="section light">
     <h2>Hizmetlerimiz</h2>
     <ul>
@@ -245,6 +289,16 @@
       <li>🌄 Özel Tur ve Gezi Organizasyonları</li>
       <li>💎 VIP Transfer</li>
     </ul>
+  </section>
+
+  <section id="galeri" class="section">
+    <h2>Galeri</h2>
+    <div class="gallery">
+      <img src="assets/galeri/galeri1.jpeg" alt="Galeri Resmi 1">
+      <img src="assets/galeri/galeri2.jpeg" alt="Galeri Resmi 2">
+      <img src="assets/galeri/galeri3.jpeg" alt="Galeri Resmi 3">
+      <img src="assets/galeri/galeri4.jpeg" alt="Galeri Resmi 4">
+    </div>
   </section>
 
   <section id="iletisim" class="section">
